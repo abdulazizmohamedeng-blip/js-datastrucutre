@@ -13,10 +13,11 @@ class hashtable {
 
   set(key, value) {
     let address = this._hash(key);
-    if (!this.data[address]) {
-      this.data[address] = [];
+    let currentBucket = this.data[address];
+    if (!currentBucket) {
+      currentBucket = [];
     }
-    this.data[this._hash(key)].push([key, value]);
+    currentBucket.push([key, value]);
   }
 
   get(key) {
@@ -52,7 +53,6 @@ tb.set("kuwi", 40);
 tb.set("kuwi", 4500);
 
 console.log(tb.keys());
-
 function firstRecurring(arr) {
   let hashtable = {};
   for (let i = 0; i < arr.length; i++) {
